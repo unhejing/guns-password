@@ -4,7 +4,7 @@ BUILD_ID=DONTKILLME
 
 #需要配置如下参数
 # 项目路径, 在Execute Shell中配置项目路径, pwd 就可以获得该项目路径
-export PROJ_PATH=`pwd`
+#export PROJ_PATH=`pwd`
 echo $PROJ_PATH
 
 cd ./target
