@@ -15,7 +15,7 @@ mvn clean package -Dmaven.test.skip=true
 
 #删除原来的包
 cd $DIR
-if [ -e $JARNAME];
+if [ -e "$JARNAME" ]
 then
     rm -f $JARNAME
 fi
@@ -23,7 +23,7 @@ fi
 echo $JARNAME
 
 PID=$(ps -ef | grep $JARNAME | grep -v grep | awk '{ print $2 }')
-if [ -z "$PID"]
+if [ -z "$PID" ]
 then
 	echo $JARNAME is already stopped
 else 
