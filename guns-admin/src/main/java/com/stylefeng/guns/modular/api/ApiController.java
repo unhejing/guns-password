@@ -2,11 +2,15 @@ package com.stylefeng.guns.modular.api;
 
 import com.stylefeng.guns.core.base.controller.BaseController;
 import com.stylefeng.guns.core.base.tips.ErrorTip;
+import com.stylefeng.guns.core.common.model.JSONResult;
 import com.stylefeng.guns.core.shiro.ShiroKit;
 import com.stylefeng.guns.core.shiro.ShiroUser;
 import com.stylefeng.guns.core.util.JwtTokenUtil;
+import com.stylefeng.guns.modular.system.dao.CustomerMapper;
 import com.stylefeng.guns.modular.system.dao.UserMapper;
+import com.stylefeng.guns.modular.system.model.Customer;
 import com.stylefeng.guns.modular.system.model.User;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -32,6 +36,9 @@ public class ApiController extends BaseController {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private CustomerMapper customerMapper;
 
     /**
      * api登录接口，通过账号密码获取token
@@ -72,7 +79,9 @@ public class ApiController extends BaseController {
      * 测试接口是否走鉴权
      */
     @RequestMapping(value = "/test", method = RequestMethod.POST)
+
     public Object test() {
+
         return SUCCESS_TIP;
     }
 
