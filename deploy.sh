@@ -7,10 +7,19 @@ BUILD_ID=DONTKILLME
 #export PROJ_PATH=`pwd`
 echo $PROJ_PATH
 
-cd ./target
-FILENAME=$(find -name guns-admin-1.0.0.jar)
-echo $FILENAME
-JARNAME=${FILENAME##*/}
+DIR=/home
+JARNAME=guns-admin-1.0.0.jar
+
+
+clean package -Dmaven.test.skip=true
+
+#删除原来的包
+cd $DIR
+if [ -e $JARNAME];
+then
+    rm -f $JARNAME
+fi
+
 echo $JARNAME
 
 PID=$(ps -ef | grep $JARNAME | grep -v grep | awk '{ print $2 }')
@@ -22,7 +31,7 @@ else
 	kill -9 $PID
 fi
 
-cd /home
+cd $DIR
 cp /root/.jenkins/workspace/GUNS-PASSWORD/guns-password/guns-admin/target/$JARNAME .
 
 nohup java -jar $JARNAME > 1.log &
