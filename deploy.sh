@@ -30,7 +30,7 @@ else
 fi
 
 cd $DIR
-cp /root/.jenkins/workspace/GUNS-PASSWORD/guns-password/guns-admin/target/$JARNAME .
+cp /root/.jenkins/workspace/GUNS-PASSWORD/guns-admin/target/$JARNAME .
 
 nohup java -jar $JARNAME > 1.log &
 
