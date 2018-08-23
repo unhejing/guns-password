@@ -11,7 +11,7 @@ DIR=/home
 JARNAME=guns-admin-1.0.0.jar
 
 
-clean package -Dmaven.test.skip=true
+mvn clean package -Dmaven.test.skip=true
 
 #删除原来的包
 cd $DIR
