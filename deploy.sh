@@ -30,6 +30,7 @@ else
 fi
 
 cd $DIR
+echo 当前路径 `pwd`
 cp /root/.jenkins/workspace/GUNS-PASSWORD/guns-admin/target/$JARNAME .
 
 nohup java -jar $JARNAME > 1.log &
