@@ -26,7 +26,7 @@ import java.util.Objects;
  **/
 @Api(description = "用户APP接口")
 @RestController
-@RequestMapping("/password")
+@RequestMapping("/restPassword")
 public class RestPasswordController extends BaseController {
 
     @Autowired
