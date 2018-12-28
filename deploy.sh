@@ -35,4 +35,6 @@ cp /root/.jenkins/workspace/GUNS-PASSWORD/guns-admin/target/$JARNAME .
 
 nohup java -jar $JARNAME > 1.log &
 
+echo 访问地址：http://123.206.102.179:8080
+
 echo "shell end"
