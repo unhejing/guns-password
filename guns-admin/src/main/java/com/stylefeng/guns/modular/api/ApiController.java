@@ -20,6 +20,7 @@ import com.stylefeng.guns.modular.system.model.BizPassword;
 import com.stylefeng.guns.modular.system.model.Customer;
 import com.stylefeng.guns.modular.system.model.User;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.collections.map.HashedMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -30,10 +31,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * 接口控制器提供
@@ -86,9 +84,10 @@ public class ApiController extends BaseController {
         md5CredentialsMatcher.setHashIterations(ShiroKit.hashIterations);
         boolean passwordTrueFlag = md5CredentialsMatcher.doCredentialsMatch(
                 usernamePasswordToken, simpleAuthenticationInfo);
-
+        Map<String,String> data = new HashedMap();
+        data.put("token",JwtTokenUtil.generateToken(String.valueOf(user.getId())));
         if (passwordTrueFlag) {
-            return new JSONResult("token",JwtTokenUtil.generateToken(String.valueOf(user.getId())));
+            return new JSONResult(JSONResult.CODE_SUCCESS,"登陆成功",data);
         } else {
             return new JSONResult(JSONResult.CODE_FAIL,"账号密码错误");
         }
