@@ -88,9 +88,7 @@ public class ApiController extends BaseController {
                 usernamePasswordToken, simpleAuthenticationInfo);
 
         if (passwordTrueFlag) {
-            HashMap<String, Object> data = new HashMap<>();
-            data.put("token", JwtTokenUtil.generateToken(String.valueOf(user.getId())));
-            return new JSONResult(JSONResult.CODE_SUCCESS,data);
+            return new JSONResult("token",JwtTokenUtil.generateToken(String.valueOf(user.getId())));
         } else {
             return new JSONResult(JSONResult.CODE_FAIL,"账号密码错误");
         }
